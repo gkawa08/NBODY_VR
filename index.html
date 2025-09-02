@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBODY Visualization</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        canvas { display: block; }
+        #ui-controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        #ui-controls div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        label {
+            min-width: 80px;
+        }
+        select {
+            max-width: 250px;
+        }
+        #tracking-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border-radius: 5px;
+            display: none;
+            white-space: pre;
+            font-family: monospace;
+        }
+        #scale-bar {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+        #scale-bar-line {
+            border: 1px solid #333;
+            border-top: none;
+            height: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ui-controls">
+        <div>
+            <button id="play-pause-btn">Play</button>
+        </div>
+        <div>
+            <label for="time-slider">Time:</label>
+            <input type="range" id="time-slider" min="0" max="100" value="0" style="width: 200px;">
+            <span id="time-label">0.00 Myr</span>
+        </div>
+        <div>
+            <label for="speed-slider">Speed:</label>
+            <input type="range" id="speed-slider" min="1" max="20" value="10" style="width: 150px;">
+        </div>
+        <div>
+            <label for="bh-size-slider">Particle Size:</label> 
+            <input type="range" id="bh-size-slider" min="1" max="50" step="1" value="10" style="width: 150px;">
+        </div>
+        <div>
+            <label for="ns-visible-checkbox">Show NS:</label>
+            <input type="checkbox" id="ns-visible-checkbox" checked>
+        </div>
+        <hr>
+        <div>
+            <label for="primary-bh-select">Track BH ID:</label>
+            <select id="primary-bh-select"></select>
+            <input type="checkbox" id="camera-track-checkbox" checked>
+            <label for="camera-track-checkbox">Follow</label>
+        </div>
+        <div>
+            <label for="exchange-event-select">Exchange Event:</label>
+            <select id="exchange-event-select"></select>
+        </div>
+    </div>
+
+    <div id="tracking-info"></div>
+
+    <div id="scale-bar">
+        <div id="scale-bar-line"></div>
+        <div id="scale-bar-label"></div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>

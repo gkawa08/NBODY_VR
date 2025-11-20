@@ -17,6 +17,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            min-width: 380px;
         }
         #ui-controls div {
             display: flex;
@@ -26,8 +27,8 @@
         label {
             min-width: 80px;
         }
-        select {
-            max-width: 250px;
+        input[type="text"] {
+            width: 80px;
         }
         #tracking-info {
             position: absolute;
@@ -72,28 +73,40 @@
             <input type="range" id="speed-slider" min="1" max="20" value="10" style="width: 150px;">
         </div>
         <div>
-            <label for="bh-size-slider">Particle Size:</label> 
-            <input type="range" id="bh-size-slider" min="1" max="50" step="1" value="10" style="width: 150px;">
+            <label for="bh-size-slider">Particle Size:</label>
+            <input type="range" id="bh-size-slider" min="1" max="50" step="1" value="25" style="width: 150px;">
         </div>
         <div>
             <label for="ns-visible-checkbox">Show NS:</label>
-            <input type="checkbox" id="ns-visible-checkbox" checked>
+            <input type="checkbox" id="ns-visible-checkbox" unchecked>
         </div>
         <hr>
         <div>
-            <label for="primary-bh-select">Track BH ID:</label>
-            <select id="primary-bh-select"></select>
-            <input type="checkbox" id="camera-track-checkbox" checked>
-            <label for="camera-track-checkbox">Follow</label>
+            <label for="highlight-bh-input">Highlight BH:</label>
+            <input type="text" id="highlight-bh-input" placeholder="BH ID">
+            <button id="clear-highlight-btn">Clear</button>
         </div>
         <div>
-            <label for="exchange-event-select">Exchange Event:</label>
-            <select id="exchange-event-select"></select>
+            <label for="camera-track-checkbox">Follow:</label>
+            <input type="checkbox" id="camera-track-checkbox" unchecked>
+        </div>
+        <div>
+            <label for="com-frame-checkbox">CoM Frame:</label>
+            <input type="checkbox" id="com-frame-checkbox" checked>
+        </div>
+        <hr>
+        <div>
+            <label for="interaction-event-select">Interaction Event:</label>
+            <select id="interaction-event-select"></select>
+        </div>
+        <hr>
+        <div id="remnant-info" style="display: none; flex-direction: column; align-items: flex-start;">
+            <strong>Remnant BH Info:</strong>
+            <span id="remnant-spin-label"></span>
         </div>
     </div>
 
     <div id="tracking-info"></div>
-
     <div id="scale-bar">
         <div id="scale-bar-line"></div>
         <div id="scale-bar-label"></div>
@@ -107,7 +120,6 @@
             }
         }
     </script>
-
     <script type="module" src="main.js"></script>
 
 </body>

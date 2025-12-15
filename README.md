@@ -2,6 +2,8 @@
 
 WebXR-enabled 3D visualization for astrophysical N-body simulations (Black Holes & Neutron Stars).
 
+https://gkawa08.github.io/NBODY_VR/
+
 ## Data Generation
 Prepare the required CSV files using your simulation scripts:
 

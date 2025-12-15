@@ -2,8 +2,8 @@
 **WebXR-enabled 3D visualization for astrophysical N-body simulations.**
 Focusing on the dynamics of Black Holes (BH) and Neutron Stars (NS).
 
-![Demo Preview](docs/demo.gif)
-*(Click the image above to watch the demo video)*
+![Demo Preview](movie_exchange.mp4)
+*(Click the link to watch the demo video)*
 
 ---
 

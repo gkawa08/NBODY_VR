@@ -78,6 +78,3 @@ http-server -S -C localhost.pem -K localhost.pem -p 8080
 
   * **Data Processing**: Python 3.x
   * **Visualization**: WebGL-capable browser (Chrome/Edge/Firefox/Oculus Browser)
-
-このREADMEであれば、専門家が見たときに「NBODY6のデータをHDF5経由で可視化しているんだな」と技術的な背景まで理解してもらえます。
-```

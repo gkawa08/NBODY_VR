@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NBODY Visualization</title>
     <style>
         body { margin: 0; overflow: hidden; font-family: sans-serif; }
@@ -12,24 +12,23 @@
             top: 10px;
             left: 10px;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 5px;
             display: flex;
             flex-direction: column;
             gap: 8px;
             min-width: 380px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 100;
         }
-        #ui-controls div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        label {
-            min-width: 80px;
-        }
-        input[type="text"] {
-            width: 80px;
-        }
+        #ui-controls div { display: flex; align-items: center; gap: 10px; }
+        label { min-width: 120px; user-select: none; font-weight: bold; }
+        .label-velocity { color: #0000ff; }
+        .label-spin { color: #ff0000; }
+        input[type="text"], input[type="number"] { width: 60px; }
+        input[type="range"] { touch-action: none; cursor: pointer; }
+        input[type="color"] { width: 40px; height: 24px; border: none; padding: 0; background: none; cursor: pointer; }
         #tracking-info {
             position: absolute;
             bottom: 10px;
@@ -41,27 +40,25 @@
             display: none;
             white-space: pre;
             font-family: monospace;
+            pointer-events: none;
         }
         #scale-bar {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            color: #333;
+            color: #888;
             font-size: 12px;
             text-align: center;
+            pointer-events: none;
         }
-        #scale-bar-line {
-            border: 1px solid #333;
-            border-top: none;
-            height: 5px;
-        }
+        #scale-bar-line { border: 1px solid #888; border-top: none; height: 5px; }
     </style>
 </head>
 <body>
-
     <div id="ui-controls">
         <div>
             <button id="play-pause-btn">Play</button>
+            <button id="reset-camera-btn">Reset Camera</button>
         </div>
         <div>
             <label for="time-slider">Time:</label>
@@ -70,48 +67,64 @@
         </div>
         <div>
             <label for="speed-slider">Speed:</label>
-            <input type="range" id="speed-slider" min="1" max="20" value="10" style="width: 150px;">
+            <input type="range" id="speed-slider" min="1" max="19" value="10" style="width: 150px;">
         </div>
         <div>
-            <label for="bh-size-slider">Particle Size:</label>
-            <input type="range" id="bh-size-slider" min="1" max="50" step="1" value="25" style="width: 150px;">
-        </div>
-        <div>
-            <label for="ns-visible-checkbox">Show NS:</label>
-            <input type="checkbox" id="ns-visible-checkbox" unchecked>
+            <label for="bh-size-slider">Base Size:</label>
+            <input type="range" id="bh-size-slider" min="0" max="2" step="0.01" value="1" style="width: 150px;">
         </div>
         <hr>
         <div>
-            <label for="highlight-bh-input">Highlight BH:</label>
-            <input type="text" id="highlight-bh-input" placeholder="BH ID">
-            <button id="clear-highlight-btn">Clear</button>
+            <label for="vel-scale-slider" class="label-velocity">Velocity Vector:</label>
+            <input type="range" id="vel-scale-slider" min="0" max="2" step="0.01" value="1" style="width: 150px;">
         </div>
         <div>
+            <label for="spin-scale-slider" class="label-spin">Spin Vector:</label>
+            <input type="range" id="spin-scale-slider" min="0" max="2" step="0.01" value="1" style="width: 150px;">
+        </div>
+        <hr>
+        <div>
+            <label for="bg-brightness-slider">BG Brightness:</label>
+            <input type="range" id="bg-brightness-slider" min="0" max="255" value="10" style="width: 150px;">
+        </div>
+        <div>
+            <label for="ns-visible-checkbox">Show NS:</label>
+            <input type="checkbox" id="ns-visible-checkbox">
+        </div>
+        <hr>
+        <div>
+            <label>Mass Range:</label>
+            <input type="number" id="mass-min-input" placeholder="Min" step="0.1">
+            <span>-</span>
+            <input type="number" id="mass-max-input" placeholder="Max" step="0.1">
+            <input type="color" id="mass-range-color-input" value="#39ff14">
+        </div>
+        <div>
+            <label for="highlight-bh-input">Highlight BH:</label>
+            <input type="text" id="highlight-bh-input" placeholder="BH ID">
+            <input type="color" id="highlight-color-input" value="#ffff33">
+            <button id="clear-highlight-btn">Clear</button>
+        </div>
+        <hr>
+        <div>
             <label for="camera-track-checkbox">Follow:</label>
-            <input type="checkbox" id="camera-track-checkbox" unchecked>
+            <input type="checkbox" id="camera-track-checkbox">
         </div>
         <div>
             <label for="com-frame-checkbox">CoM Frame:</label>
-            <input type="checkbox" id="com-frame-checkbox" checked>
+            <input type="checkbox" id="com-frame-checkbox">
         </div>
         <hr>
         <div>
             <label for="interaction-event-select">Interaction Event:</label>
             <select id="interaction-event-select"></select>
         </div>
-        <hr>
-        <div id="remnant-info" style="display: none; flex-direction: column; align-items: flex-start;">
-            <strong>Remnant BH Info:</strong>
-            <span id="remnant-spin-label"></span>
-        </div>
     </div>
-
     <div id="tracking-info"></div>
     <div id="scale-bar">
         <div id="scale-bar-line"></div>
         <div id="scale-bar-label"></div>
     </div>
-
     <script type="importmap">
         {
             "imports": {
@@ -121,6 +134,5 @@
         }
     </script>
     <script type="module" src="main.js"></script>
-
 </body>
 </html>

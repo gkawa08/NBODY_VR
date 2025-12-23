@@ -44,8 +44,8 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 * 🩵 **Post-exchange Orbit**: The new binary orbit after the exchange is shown in **Cyan**.
 
 #### **Merge Events**
-* 🟣 **Pre-merger Binary**: The two progenitor particles are highlighted in **Magenta**.
 * 🔴 **Spin Vector**: Red arrows representing intrinsic spin (calculated from the pseudo-spin parameter $a$).
+* 🟣 **Pre-merger Binary**: The two progenitor particles are highlighted in **Magenta**.
 * 🩵 **Remnant**: The resulting single black hole after merger is highlighted in **Cyan**.
 * 🩵 **Remnant Velocity**: Post-merger velocity vector shown in **Cyan**.
 * 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in **Yellow**.

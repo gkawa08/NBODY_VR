@@ -39,8 +39,8 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 
 #### **Exchange Events**
 * 🟣 **Binary Members**: Particles currently belonging to the binary system are highlighted in **Magenta**.
-* 🔴 **Interloper**: The incoming third-body particle is highlighted in **Pink/Red**.
-* 🟢 **Pre-exchange Orbit**: The binary orbit before the interaction is shown in **Neon Green**.
+* 🔴 **Interloper**: The incoming third-body particle is highlighted in **Red**.
+* 🟢 **Pre-exchange Orbit**: The binary orbit before the interaction is shown in **Green**.
 * 🩵 **Post-exchange Orbit**: The new binary orbit after the exchange is shown in **Cyan**.
 
 #### **Merge Events**
@@ -48,7 +48,7 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 * 🔴 **Spin Vector**: Red arrows representing intrinsic spin (calculated from the pseudo-spin parameter $a$).
 * 🩵 **Remnant**: The resulting single black hole after merger is highlighted in **Cyan**.
 * 🩵 **Remnant Velocity**: Post-merger velocity vector shown in **Cyan**.
-* 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in **Bright Yellow**.
+* 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in **Yellow**.
 * 🟠 **Merge Spin**: The final spin vector of the merged product is shown in **Orange**.
 
 ---

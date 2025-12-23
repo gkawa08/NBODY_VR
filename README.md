@@ -36,7 +36,6 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 * ⚫ **Black Hole**: Default dark spheres.
 * 🟠 **Neutron Star**: Glowing orange spheres with emissive intensity.
 * 🔵 **Velocity Vector**: Blue arrows representing the instantaneous velocity.
-* 🔴 **Spin Vector**: Red arrows representing intrinsic spin (calculated from the pseudo-spin parameter $a$).
 
 #### **Exchange Events**
 * 🟣 **Binary Members**: Particles currently belonging to the binary system are highlighted in **Magenta**.
@@ -46,6 +45,7 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 
 #### **Merge Events**
 * 🟣 **Pre-merger Binary**: The two progenitor particles are highlighted in **Magenta**.
+* 🔴 **Spin Vector**: Red arrows representing intrinsic spin (calculated from the pseudo-spin parameter $a$).
 * 🩵 **Remnant**: The resulting single black hole after merger is highlighted in **Cyan**.
 * 🩵 **Remnant Velocity**: Post-merger velocity vector shown in **Cyan**.
 * 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in **Bright Yellow**.

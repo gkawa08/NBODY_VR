@@ -26,11 +26,30 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 
 * **Interactive Time Control**: Scrub through simulation time to observe dynamical evolution.
 * **Reference Frames**: Toggle between the Simulation Frame and the **Center of Mass (CoM) Frame** to isolate binary dynamics.
-* **Event Visualization**: Automatically highlights binary exchanges and mergers based on log data.
-    * **Vector Visualization**: Real-time display of velocity and spin vectors during interactions.
 * **Object Tracking**: Auto-follow specific particles or focus on interaction events.
-* **Interactive Inspector**: Hover over any particle to view detailed properties (Mass, Position, Velocity, Spin Parameter).
+* **Interactive Inspector**: Hover over any particle to view detailed properties (Mass, Position, Velocity).
 * **High-Fidelity Visuals**: MeshPhysical materials for Black Holes and Emissive glowing effects for Neutron Stars.
+
+### 🎨 Visual Legend (Color Coding)
+
+#### **Standard Objects & Vectors**
+* ⚫ **Black Hole**: Default dark spheres.
+* 🟠 **Neutron Star**: Glowing orange spheres with emissive intensity.
+* 🔵 **Velocity Vector**: Blue arrows representing the instantaneous velocity.
+* 🔴 **Spin Vector**: Red arrows representing intrinsic spin (calculated from the pseudo-spin parameter $a$).
+
+#### **Exchange Events**
+* 🟣 **Binary Members**: Particles currently belonging to the binary system are highlighted in **Magenta**.
+* 🔴 **Interloper**: The incoming third-body particle is highlighted in **Pink/Red**.
+* 🟢 **Pre-exchange Orbit**: The binary orbit before the interaction is shown in **Neon Green**.
+* 🩵 **Post-exchange Orbit**: The new binary orbit after the exchange is shown in **Cyan**.
+
+#### **Merge Events**
+* 🟣 **Pre-merger Binary**: The two progenitor particles are highlighted in **Magenta**.
+* 🩵 **Remnant**: The resulting single black hole after merger is highlighted in **Cyan**.
+* 🩵 **Remnant Velocity**: Post-merger velocity vector shown in **Cyan**.
+* 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in **Bright Yellow**.
+* 🟠 **Merge Spin**: The final spin vector of the merged product is shown in **Orange**.
 
 ---
 
@@ -53,6 +72,7 @@ The repository includes scripts to extract trajectories and events.
 | **1** | **`BH_data_mp.py`** | `snapdata.hdf5` | `bh_history.csv` | Extracts Black Hole trajectories (ID, Mass, Position, Velocity) using multiprocessing. |
 | **2** | **`NS_data_mp.py`** | `snapdata.hdf5` | `ns_history.csv` | Extracts Neutron Star trajectories. |
 | **3** | **`BH_all_data.ipynb`** | `*_output.dat` | `bh_events.csv` | Parses simulation logs to detect `EXCHANGE`, `ESCAPE`, and `MERGE` events. |
+
 
 ### 3. Deployment
 Move the generated CSV files to the root directory of the web application.

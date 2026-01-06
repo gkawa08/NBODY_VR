@@ -3,7 +3,19 @@
 **WebXR-enabled 3D visualization for astrophysical N-body simulations.**
 Focusing on the dynamics of Black Holes (BH) and Neutron Stars (NS) in dense star clusters.
 
-https://github.com/user-attachments/assets/ad2e220e-3e62-41cc-b76f-5b5b09b94c66
+
+
+https://github.com/user-attachments/assets/a49201b5-f9df-4052-a99d-3f67c165a1d5
+
+
+
+https://github.com/user-attachments/assets/a535ee28-7e73-4a7e-8f3d-0a907458704a
+
+
+
+
+https://github.com/user-attachments/assets/9604ebf1-a64e-49ec-9564-df43e84dc77b
+
 
 ---
 

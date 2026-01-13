@@ -60,7 +60,6 @@ This tool is designed for detailed analysis of N-body simulation results (specif
 * 🟣 **Pre-merger Binary**: The two progenitor particles are highlighted in Magenta.
 * 🩵 **Remnant**: The resulting single black hole after merger is highlighted in Cyan.
 * 🩵 **Remnant Velocity**: Post-merger velocity vector shown in Cyan.
-* 🟡 **True Kick**: The "True Kick" vector (velocity change at the moment of merger) is displayed in Yellow.
 * 🟠 **Merge Spin**: The final spin vector of the merged product is shown in Orange.
 
 ---
